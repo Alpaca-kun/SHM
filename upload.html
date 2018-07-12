@@ -24,7 +24,13 @@
     <link href="css/portfolio-item.css" rel="stylesheet">
 
 	<!-- other markdown -->
-
+	<link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="bower_components/bootstrap-markdown-editor/dist/css/bootstrap-markdown-editor.css" rel="stylesheet">
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/ace-builds/src-min/ace.js"></script>
+<script src="bower_components/bootstrap-markdown-editor/dist/js/bootstrap-markdown-editor.js"></script>
+<link href="./css/bootstrap-markdown-editor.css" rel="stylesheet">
 
   </head>
 
@@ -52,7 +58,7 @@
               <a class="nav-link" href="projects.html">Projects</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
         </div>
@@ -68,13 +74,55 @@
 		 O formulário abaixo aceita padrões markdown, como nos projetos do Jupyter, para facilitar a publicação do seu projeto.  
 	  </p>
     </div>
+        <div class="container">
 
-    <form>
-      <input name="title" type="text" placeholder="Title" class="form-control" data-width="400"/>
-      <textarea name="content" data-provide="markdown" data-width="400" rows="10"></textarea>
-      <hr/>
-      <button type="submit" class="btn">Submit</button>
-    </form>
+            <form id="form">
+                <textarea name="text" id="editor"># Digite o título aqui
+
+Descreva o seu projeto aqui!
+
+## Equipamentos necessários:
+
+  * Cite os equipamentos necessários
+  * Se tiver, digite o site que a pessoa possa comprar o tal equipamento usando o botão link de cima
+
+
+> Para citações, use essa parte
+
+## Instruções
+
+  1. Enumere as instruções
+  2. Para mais instruções, continue a lista com números
+
+Para códigos, baseie-se no exemplo abaixo
+```
+#header h1 a {
+  display: block;
+  width: 300px;
+  height: 80px;
+}
+```
+                </textarea>
+            </form>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
+
+        <script src="dist/js/bootstrap-markdown-editor.js"></script>
+
+        <script>
+            jQuery(document).ready(function($) {
+                $('#editor').markdownEditor({
+                    preview: true,
+                    onPreview: function (content, callback) {
+                        callback( marked(content) );
+                    }
+                });
+            });
+        </script>
 
     <!-- /.container -->
 
